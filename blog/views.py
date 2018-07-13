@@ -12,6 +12,14 @@ def post_list(request):
 	posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
 	return render(request, 'blog/post_list.html', {'posts': posts})
 
+def teaching_list(request):
+	teaching_posts = Post.objects.filter(category='teaching')
+	return render(request, 'blog/post_list.html', {'posts': teaching_posts})
+
+def projects_list(request):
+	project_posts = Post.objects.filter(category='projects')
+	return render(request, 'blog/post_list.html', {'posts': project_posts})
+
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/post_detail.html', {'post': post})
