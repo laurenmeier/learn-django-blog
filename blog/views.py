@@ -20,6 +20,10 @@ def projects_list(request):
 	project_posts = Post.objects.filter(category='projects')
 	return render(request, 'blog/post_list.html', {'posts': project_posts})
 
+def resources_list(request):
+	resources_posts = Post.objects.filter(category='resources')
+	return render(request, 'blog/post_list.html', {'posts': resources_posts})
+
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/post_detail.html', {'post': post})
